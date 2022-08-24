@@ -19,14 +19,14 @@ class Probe(Base):
    
   def __alg(self):
     table_len = len(self._table)
-    process_timeout = table_len * (180 / 1000)
-
-    process_time = 0
-    timeout_base = time.process_time()
     
     # 1 - Gerar população de soluções
     n_solutions = self.calculate_number_solutions(table_len)
     population = self.generate_population(n_solutions)
+
+    process_timeout = table_len * (180 / 1000)
+    process_time = 0
+    timeout_base = time.process_time()
 
     while process_timeout > process_time:
       random.shuffle(population)
